@@ -1,0 +1,33 @@
+.card {
+	width: 100%;
+	padding: 12px 24px;
+	margin-top: 18px;
+	background-color: white;
+	overflow: hidden;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	&--half {
+		width: calc(50% - 12px);
+		margin-right: 6px;
+		margin-left: 6px;
+	}
+	&__title {
+		display: flex;
+		align-items: center;
+		font-size: 24px;
+		font-weight: bold;
+		&-icon {
+			margin-right: 6px;
+			font-size: 18px;
+		}
+	}
+	&__divider {
+		margin-top: 6px;
+		height: 1px;
+		width: 100%;
+		background-color: #eee;
+	}
+	&__body {
+		padding: 24px 12px;
+	}
+}

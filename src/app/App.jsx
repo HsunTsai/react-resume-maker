@@ -15,6 +15,11 @@ const pages = [
 		name: 'Home',
 		component: Loadable({ loader: () => import('./pages/home/Home'), loading: RouterLoading }),
 	},
+	{
+		path: '/setting',
+		name: 'Setting',
+		component: Loadable({ loader: () => import('./pages/setting/Setting'), loading: RouterLoading }),
+	},
 ];
 
 const App = () => {

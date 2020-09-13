@@ -1,0 +1,8 @@
+{
+	"banner": { "title": "Tsai Hsun", "subTitle": "Seinor Software Developer", "avatar": "" },
+	"cards": [
+		{ "type": "banner", "data": { "title": "Tsai Hsun", "subTitle": "Seinor Software Developer", "avatar": "" } },
+		{ "type": "timeLine", "half": true },
+		{ "type": "timeLine", "half": true }
+	]
+}

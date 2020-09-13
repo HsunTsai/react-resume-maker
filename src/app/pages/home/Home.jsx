@@ -5,6 +5,7 @@ import { Spin } from 'antd';
 import { ReducerContext } from '../../ReduxIntlProvider';
 import { getResumeData } from './homeAction';
 import Banner from './components/banner/Banner';
+import TimeLine from './components/timeLine/TimeLine';
 
 import './home.scss';
 
@@ -16,11 +17,26 @@ const Home = () => {
 		getResumeData({ dispatch });
 	}, []);
 
+	const renderCards = cardItem => {
+		if (!(cardItem && cardItem.type)) return null;
+		const { type, data, half } = cardItem;
+		switch (type) {
+			case 'banner':
+				return <Banner data={data} />;
+			case 'timeLine':
+				return <TimeLine data={data} half={half} />;
+			default:
+				return null;
+		}
+	};
+
 	return (
 		<Spin spinning={!resumeData} size="large">
 			<div className="home">
 				{/* <FormattedMessage id="superHello" values={{ someoneName: 'Hsun.Tsai' }} /> */}
-				<Banner data={{ title: 'Tsai Hsun', subTitle: 'Seinor Software Developer', avatar: '' }} />
+				{resumeData &&
+					Array.isArray(resumeData.cards) &&
+					resumeData.cards.map(cardItem => renderCards(cardItem))}
 				{/* <Avatar
 					className="home__avatar"
 					src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"

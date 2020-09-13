@@ -5,7 +5,8 @@
 	align-items: center;
 	padding: 8px 12px;
 	z-index: 1;
-	background: #ffffff88;
+	background: #00000044;
+
 	&-icon {
 		width: 24px;
 		height: 24px;
@@ -29,14 +30,14 @@
 	&-select {
 		flex: 1;
 		display: flex;
-        justify-content: flex-end;
-        .ant-select-arrow{
-            color: white;
-        }
+		justify-content: flex-end;
+		.ant-select-arrow {
+			color: white;
+		}
 		.ant-select-selector {
-            font-size: 10px;
-            color: white;
-            background-color: transparent !important;
+			font-size: 10px;
+			color: white;
+			background-color: transparent !important;
 		}
 	}
 }

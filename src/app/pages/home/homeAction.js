@@ -9,7 +9,6 @@ export const getResumeData = ({ dispatch }) => {
 	axios
 		.get(services.getResumeData)
 		.then(response => {
-			console.log('response', response);
 			if (response.data) {
 				dispatch({ type: FETCH_RESUME_DATA_SUCCESS, payload: response.data });
 			} else {
