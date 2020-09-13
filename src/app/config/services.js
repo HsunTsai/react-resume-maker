@@ -7,4 +7,6 @@ export default {
 	getLocale: `${contextRoot}locales`,
 	domain: `${domain}`,
 	apiTest: `${domain}/api/test`, // Your api url
+
+	getResumeData: `${contextRoot}data/resumeData.json`,
 };

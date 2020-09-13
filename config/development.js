@@ -38,7 +38,6 @@ module.exports = (env = 'development') => {
 			],
 			hot: true,
 		},
-
 		module: {
 			rules: [
 				{
@@ -61,11 +60,7 @@ module.exports = (env = 'development') => {
 				},
 			],
 		},
-		resolve: {
-			alias: {
-				'react-dom': '@hot-loader/react-dom',
-			},
-		},
+		resolve: { alias: { 'react-dom': '@hot-loader/react-dom' } },
 		plugins: [
 			new CaseSensitivePathsPlugin(),
 			new webpack.DefinePlugin({

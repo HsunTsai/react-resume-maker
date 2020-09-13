@@ -1,37 +1,32 @@
-import React, { useContext, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { Button } from 'antd';
-import classNames from 'classnames';
+import React, { useContext, useEffect } from 'react';
+// import { FormattedMessage } from 'react-intl';
+import { Spin } from 'antd';
+// import classNames from 'classnames';
 import { ReducerContext } from '../../ReduxIntlProvider';
-import { countUp, countDown } from './homeAction';
+import { getResumeData } from './homeAction';
+import Banner from './components/banner/Banner';
+
+import './home.scss';
 
 const Home = () => {
 	const [state, dispatch] = useContext(ReducerContext);
-	const { count } = state.home;
+	const { resumeData } = state.home;
 
-	const [active, setActive] = useState(false);
+	useEffect(() => {
+		getResumeData({ dispatch });
+	}, []);
 
 	return (
-		<div className="home">
-			<div
-				className={classNames('home__title', {
-					'home__title--active': active,
-				})}
-			>
-				Home Page
+		<Spin spinning={!resumeData} size="large">
+			<div className="home">
+				{/* <FormattedMessage id="superHello" values={{ someoneName: 'Hsun.Tsai' }} /> */}
+				<Banner data={{ title: 'Tsai Hsun', subTitle: 'Seinor Software Developer', avatar: '' }} />
+				{/* <Avatar
+					className="home__avatar"
+					src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+				/> */}
 			</div>
-			<FormattedMessage id="superHello" values={{ someoneName: 'Hsun.Tsai' }} />
-			<Button className="home__btn" type="primary" onClick={() => setActive(!active)}>
-				{`Home Title ${active ? 'inActive' : 'Active'}`}
-			</Button>
-
-			<br />
-			<div>{`Now Count ==> ${count}`}</div>
-			<div>
-				<Button onClick={() => countUp(dispatch, count)}>Count Up</Button>
-				<Button onClick={() => countDown(dispatch, count)}>Count Down</Button>
-			</div>
-		</div>
+		</Spin>
 	);
 };
 

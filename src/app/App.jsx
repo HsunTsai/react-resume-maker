@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 /* You can cache page when page cahnge by import CacheRoute & CacheSwitch */
 // import CacheRoute, { CacheSwitch } from 'react-router-cache-route';
 import Loadable from 'react-loadable';
+import { hot } from 'react-hot-loader/root';
 
 import services from './config/services';
-import Header from './common/components/Header';
+import Header from './common/components/header/Header';
 import RouterLoading from './common/components/loading/Loading';
 
 const pages = [
@@ -13,16 +14,6 @@ const pages = [
 		path: '/home',
 		name: 'Home',
 		component: Loadable({ loader: () => import('./pages/home/Home'), loading: RouterLoading }),
-	},
-	{
-		path: '/about',
-		name: 'About',
-		component: Loadable({ loader: () => import('./pages/about/About'), loading: RouterLoading }),
-	},
-	{
-		path: '/topic',
-		name: 'Topic',
-		component: Loadable({ loader: () => import('./pages/topic/Topics'), loading: RouterLoading }),
 	},
 ];
 
@@ -42,4 +33,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default hot(App);

@@ -1,14 +1,15 @@
-import { COUNT_CHANGE } from './homeAction';
+import { FETCH_RESUME_DATA_SUCCESS, FETCH_RESUME_DATA_FAILED } from './homeAction';
 
 const INITIAL_STATE = {
-	count: 0,
+	resumeData: null,
 };
 
 const home = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
-		case COUNT_CHANGE: {
-			return { ...state, count: action.payload.count };
-		}
+		case FETCH_RESUME_DATA_SUCCESS:
+			return { ...state, resumeData: action.payload };
+		case FETCH_RESUME_DATA_FAILED:
+			return { ...state, resumeData: {} };
 		default:
 			return state;
 	}

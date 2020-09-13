@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 // css
@@ -21,7 +22,8 @@ const render = Component => {
 
 render(App);
 if (module.hot) {
-	module.hot.accept('./app/App', () => {
-		render(App);
+	module.hot.accept('./app/App.jsx', () => {
+		const nextApp = require('./app/App.jsx').default;
+		render(nextApp);
 	});
 }

@@ -1,25 +1,23 @@
-import { openNotificationWithIcon } from '../../utils/notification';
+import axios from 'axios';
+import { openNotificationError } from '../../utils/notification';
+import services from '../../config/services';
 
-export const COUNT_CHANGE = 'COUNT_CHANGE';
+export const FETCH_RESUME_DATA_SUCCESS = 'FETCH_RESUME_DATA_SUCCESS';
+export const FETCH_RESUME_DATA_FAILED = 'FETCH_RESUME_DATA_FAILED';
 
-export const countUp = (dispatch, count) => {
-	if (count < 5) {
-		dispatch({
-			type: COUNT_CHANGE,
-			payload: { count: count + 1 },
+export const getResumeData = ({ dispatch }) => {
+	axios
+		.get(services.getResumeData)
+		.then(response => {
+			console.log('response', response);
+			if (response.data) {
+				dispatch({ type: FETCH_RESUME_DATA_SUCCESS, payload: response.data });
+			} else {
+				throw new Error('Parse resume data error');
+			}
+		})
+		.catch(error => {
+			dispatch({ type: FETCH_RESUME_DATA_FAILED });
+			openNotificationError('error', 'Get Resume Data Error', error);
 		});
-	} else {
-		openNotificationWithIcon('error', 'Stop', 'Count can not bigger than 5');
-	}
-};
-
-export const countDown = (dispatch, count) => {
-	if (count > 0) {
-		dispatch({
-			type: COUNT_CHANGE,
-			payload: { count: count - 1 },
-		});
-	} else {
-		openNotificationWithIcon('error', 'Stop', 'Count can not smaller than 0');
-	}
 };
