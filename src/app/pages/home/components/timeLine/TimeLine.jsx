@@ -5,7 +5,7 @@ import { FieldTimeOutlined } from '@ant-design/icons';
 import Card from '../card/Card';
 
 const TimeLine = ({ data, half }) => {
-	console.log('timeline data', data);
+	if (data) console.log('timeline data', data);
 	// const { half } = data || {};
 	return (
 		<Card title="經歷" icon={<FieldTimeOutlined />} half={half}>

@@ -48,7 +48,7 @@ module.exports = () => {
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				title: 'React Web Title',
+				title: '2020 Hsun Resume',
 				favicon: 'src/favicon.ico',
 				alwaysWriteToDisk: true,
 				filename: 'index.html',

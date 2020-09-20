@@ -7,7 +7,14 @@ const INITIAL_STATE = {
 const home = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case FETCH_RESUME_DATA_SUCCESS:
-			return { ...state, resumeData: action.payload };
+			return {
+				...state,
+				/* 把每張card都產生id 以利card dragger使用 */
+				resumeData: {
+					...action.payload,
+					cards: action.payload.cards.map((item, index) => ({ ...item, id: index.toString() })),
+				},
+			};
 		case FETCH_RESUME_DATA_FAILED:
 			return { ...state, resumeData: {} };
 		default:
